@@ -1,7 +1,7 @@
 #!/bin/bash
 # SETUP UNTUK IZIN IP SERVERNYA 
 # ### IPVPS
-repo="https://raw.githubusercontent.com/FanoraTunnel/fanoratunel/main/"
+repo="https://raw.githubusercontent.com/Tomketstore/tunneling/main/"
 function CEKIP () {
 ipsaya=$(wget -qO- ifconfig.me)
 MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -329,7 +329,7 @@ clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED LIMIT XRAY        ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/Tomketstore/tunneling/main/bin/limit.sh && chmod +x limit.sh && ./limit.sh
+wget ${repo}bin/limit.sh && chmod +x limit.sh && ./limit.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
