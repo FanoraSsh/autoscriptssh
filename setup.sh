@@ -1,7 +1,7 @@
 #!/bin/bash
 # SETUP UNTUK IZIN IP SERVERNYA 
 # ### IPVPS
-repo="https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/"
+repo="https://raw.githubusercontent.com/FanoraTunnel/fanoratunel/main/"
 function CEKIP () {
 ipsaya=$(wget -qO- ifconfig.me)
 MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -94,7 +94,7 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-wget ${repo}install/ftp.sh&& chmod +x ftp.sh&& ./ftp.sh
+wget https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/ftp.sh && chmod +x ftp.sh && ./ftp.sh
 clear
 }
 clear
@@ -298,7 +298,7 @@ clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD EXTRA MENU           ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget ${repo}update.sh && chmod +x update.sh && ./update.sh
+wget https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/menu/update.sh && chmod +x update.sh && ./update.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
