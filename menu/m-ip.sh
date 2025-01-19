@@ -5,7 +5,8 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/FanoraSsh/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/FanoraSsh/izin//main/admin"
+reseller=$(curl -sS https://raw.githubusercontent.com/FanoraSsh/izin//main/admin | grep $MYIP | awk '{print $2}')
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -19,19 +20,18 @@ checking_sc() {
     echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
     echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
     echo -e "             \033[0;33mContact Admin :${NC}"
-    echo -e "      \033[0;36mTelegram${NC} t.me/FanoraVpnTunnel"
-    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6287835373265"
+    echo -e "      \033[0;36mTelegram${NC} t.me/FanoraSsh"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/62*"
     echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
     exit
   fi
 }
 checking_sc
 clear
-Repo1="https://raw.githubusercontent.com/valkry7/Regist/MONSTER/"
 export MYIP=$( curl -s https://ipinfo.io/ip/ )
-SELLER=$(curl -sS ${Repo1}ip | grep $MYIP | awk '{print $2}')
+SELLERR=$(curl -sS ${Repo1}ip | grep $MYIP | awk '{print $2}')
 Exp100=$(curl -sS ${Repo1}ip | grep $MYIP | awk '{print $3}')
-data_ip="https://raw.githubusercontent.com/FanoraSsh/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/FanoraSsh/izin//main/ip"
 d2=$(date -d "$date_list" +"+%s")
 d1=$(date -d "$Exp" +"+%s")
 dayleft=$(( ($d1 - $d2) / 86400 ))
@@ -50,33 +50,33 @@ YELL='\033[1;33m'
 BGX="\033[42m"
 END='\e[0m'
 AKTIF="VERIFIED"
-TOKEN="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"
-REPO="https://github.com/FanoraSsh/permission.git"
-EMAIL="encitgtg1@gmail.com"
-USER="oktaviaps"
+TOKEN="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"
+REPO="https://github.com/FanoraSsh/iz.git"
+EMAIL="hesaceza476@gmail.com"
+USER="FanoraSsh"
 
 
 add-ip() {
 TIMES="10"
-CHATID="6031523305"
-KEY="6649557378:AAHD3V6crzj4fu7BgFjyzkMDP8bqdb_S-Z0"
+CHATID="-1001907100770"
+KEY="6819626240:AAGIKBJZt7Gj9PfzcmNOaOOlctTrTXNGRc"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 
 
     today=`date -d "0 days" +"%Y-%m-%d"`
-    git clone ${REPO} /root/ipvps/ &> /dev/null
+    git clone ${REPO} /root/izin/ &> /dev/null
     clear
     echo -e ""
     echo -e ""
     read -p "Input IP Address : " ip
-    CLIENT_EXISTS=$(grep -w $ip /root/ipvps/ip | wc -l)
+    CLIENT_EXISTS=$(grep -w $ip /root/izin/ip | wc -l)
     if [[ ${CLIENT_EXISTS} == '1' ]]; then
     echo "IP Already Exist !"
     exit 0
     fi
     echo -e ""
    # read -p "  Input Username IP (Example : reyz) : " name
-    name=H6EFctYeZ3DqOWSaiXjtT1u8`</dev/urandom tr -dc A-Z0-9 | head -c4`
+    name=FTP`</dev/urandom tr -dc A-Z0-9 | head -c4`
     echo -e ""
     clear
     echo -e ""
@@ -95,22 +95,22 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     
     if [[ ${exp} == '1' ]]; then
     exp2=`date -d "30 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/izin/ip
     elif [[ ${exp} == '2' ]]; then
     exp2=`date -d "60 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/izin/ip
     elif [[ ${exp} == '3' ]]; then
     exp2=`date -d "90 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/izin/ip
     elif [[ ${exp} == '4' ]]; then
     exp2="Lifetime"
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/izin/ip
     elif [[ ${exp} == '5' ]]; then
     read -p "Input Expired Days : " exp11
     exp2=`date -d "$exp11 days" +"%Y-%m-%d"`
-    echo "### ${name} ${exp2} ${ip}" >> /root/ipvps/ip
+    echo "### ${name} ${exp2} ${ip}" >> /root/izin/ip
     fi
-    cd /root/ipvps
+    cd /root/izin
     git config --global user.email "${EMAIL}" &> /dev/null
     git config --global user.name "${USER}" &> /dev/null
     rm -rf .git &> /dev/null
@@ -118,9 +118,9 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     git add . &> /dev/null
     git commit -m m &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/FanoraSsh/permission
-    git push -f https://${TOKEN}@github.com/FanoraSsh/permission.git &> /dev/null
-    rm -rf /root/ipvps
+    git remote add origin https://github.com/FanoraSsh/izin
+    git push -f https://${TOKEN}@github.com/FanoraSsh/izin.git &> /dev/null
+    rm -rf /root/izin
     clear
     sleep 1
     echo "  Registering IP Address..."
@@ -134,7 +134,7 @@ TEXT="
 <code>───────────────────────────</code>
 <code>    SUCCES  REGISTERED IP VPS</code>
 <code>───────────────────────────</code>
-USERNAME       :<code> $name</code>
+USERNAME     :<code> $name</code>
 IP Address     :<code> $ip</code>
 Registered On  :<code> $today</code>
 Expired On     :<code> $exp2</code>
@@ -157,106 +157,35 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
 
-del-ip() {
-TIMES="10"
-CHATID="6031523305"
-KEY="6649557378:AAHD3V6crzj4fu7BgFjyzkMDP8bqdb_S-Z0"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
-
-    rm -rf /root/ipvps
-    git clone ${REPO} /root/ipvps/ &> /dev/null
-    clear
-    echo ""
-    echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "          \e[1;97mList IP Address Have Been Registered${NC}"
-    echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo ""
-    grep -E "^###"    "/root/ipvps/ip" | cut -d ' ' -f 2-6 | column -t | sort | uniq
-    grep -E "^#&"    "/root/ipvps/ip" | cut -d ' ' -f 2-6 | column -t | sort | uniq
-    echo ""
-    echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-
-    read -p "   Input IP Address To Delete : " ipdel
-    name=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $2}')
-    exp=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $3}')
-    if [[ ${exp} == 'Lifetime' ]]; then
-    sed -i "/^#&   $name   $exp $ipdel/,/^},{/d" /root/ipvps/ip
-    else
-    sed -i "/^### $name $exp $ipdel/,/^},{/d" /root/ipvps/ip
-    fi
-    cd /root/ipvps
-    git config --global user.email "${EMAIL}" &> /dev/null
-    git config --global user.name "${USER}" &> /dev/null
-    rm -rf .git &> /dev/null
-    git init &> /dev/null
-    git add . &> /dev/null
-    git commit -m m &> /dev/null
-    git branch -M main &> /dev/null
-    git remote add origin https://github.com/FanoraSsh/permission
-    git push -f https://${TOKEN}@github.com/FanoraSsh/permission.git &> /dev/null
-    rm -rf /root/ipvps
-    clear
-    sleep 1
-    echo "  Delete IP Address..."
-    sleep 1
-    echo "  Processing..."
-    sleep 1
-    echo "  Done!"
-    sleep 1
-    clear
-TEXT1="
-<code>───────────────────────────</code>
-<code>    SUCCES DELETE  IP VPS</code>
-<code>───────────────────────────</code>
-USERNAME       :<code> $name</code>
-IP Address     :<code> $ipdel</code>
-Expired On     :<code> $exp</code>
-<code>───────────────────────────</code>
-"
-curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT1&parse_mode=html" $URL >/dev/null
-    echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "          \e[1;97mSuccesfully Deleted The IP Address${NC}"
-    echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo ""
-    echo -e "  ${YELL}Username${NC}   : $name"
-    echo -e "  ${YELL}IP Address${NC} : $ipdel"
-    echo -e "  ${YELL}Expired On${NC} : $exp"
-    echo ""
-    echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-
-read -n 1 -s -r -p "  Press any key to back on menu"
-menu
-}
-
 renew-ip() {
 TIMES="10"
-CHATID="6031523305"
-KEY="6649557378:AAHD3V6crzj4fu7BgFjyzkMDP8bqdb_S-Z0"
+CHATID="7280668462"
+KEY="8053013581:AAHH6sTf9YniIp2vpw5iaXGpw4pFNl-JbiI"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 
-    rm -rf /root/ipvps
-    git clone ${REPO} /root/ipvps/ &> /dev/null
+    rm -rf /root/izin
+    git clone ${REPO} /root/izin/ &> /dev/null
     clear
     echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo -e "          \e[1;97mList IP Address Have Been Registered${NC}"
     echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo ""
-    grep -E "^###" "/root/ipvps/ip" | cut -d ' ' -f 2-6 | column -t | sort | uniq
+    grep -E "^###" "/root/izin/ip" | cut -d ' ' -f 2-6 | column -t | sort | uniq
     echo ""
     echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo ""
     read -p "  Input IP Address To Renew : " ipdel
     read -p "  Input Days  : " days
-    name=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $2}')
-    exp=$(cat /root/ipvps/ip | grep $ipdel | awk '{print $3}')
+    name=$(cat /root/izin/ip | grep $ipdel | awk '{print $2}')
+    exp=$(cat /root/izin/ip | grep $ipdel | awk '{print $3}')
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $days))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-    sed -i "s/### $name $exp $ipdel/### $name $exp4 $ipdel/g" /root/ipvps/ip
-    cd /root/ipvps
+    sed -i "s/### $name $exp $ipdel/### $name $exp4 $ipdel/g" /root/izin/ip
+    cd /root/izin
     git config --global user.email "${EMAIL}" &> /dev/null
     git config --global user.name "${USER}" &> /dev/null
     rm -rf .git &> /dev/null
@@ -264,9 +193,9 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
     git add . &> /dev/null
     git commit -m m &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/FanoraSsh/permission
-    git push -f https://${TOKEN}@github.com/FanoraSsh/permission.git &> /dev/null
-    rm -rf /root/ipvps
+    git remote add origin https://github.com/FanoraSsh/izin
+    git push -f https://${TOKEN}@github.com/FanoraSsh/izin.git &> /dev/null
+    rm -rf /root/izin
     clear
     sleep 1
     echo "  Renew IP Address..."
@@ -307,14 +236,13 @@ clear
 
 echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "  [ REGISTER IP MENU ]${NC}"
-echo -e "   SELLER NAME : AdminSF "
+echo -e "   NAME RESELLER : $reseller "
 echo -e "   SELLER STATUS : $AKTIF "
 echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e ""
 echo -e "  ${grenbo}[1]$NC  ${YELL}Add IP VPS"$NC     
-echo -e "  ${grenbo}[2]$NC  ${YELL}Delete IP VPS"$NC
-echo -e "  ${grenbo}[3]$NC  ${YELL}Renew IP VPS"$NC
-echo -e "  ${grenbo}[4]$NC  ${YELL}EXIT ADD IP"$NC
+echo -e "  ${grenbo}[2]$NC  ${YELL}Renew IP VPS"$NC
+echo -e "  ${grenbo}[3]$NC  ${YELL}EXIT ADD IP VPS"$NC
 echo -e ""
 echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
@@ -326,11 +254,11 @@ add-ip
 ;;
 2 | 02)
 clear
-del-ip
+renew-ip
 ;;
 3 | 03)
 clear
-renew-ip
+exit
 ;;
 
 4 | 04)

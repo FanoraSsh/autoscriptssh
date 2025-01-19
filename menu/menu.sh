@@ -13,20 +13,15 @@ uram=$( free -h | awk 'NR==2 {print $3}' )
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
 author=$(cat /etc/profil)
-DAY=$(date +%A)
-DATE=$(date +%m/%d/%Y)
 DATE2=$(date -R | cut -d " " -f -5)
-MYIP=$(wget -qO- ifconfig.me)
 Exp2=$(curl -sS https://raw.githubusercontent.com/FanoraSsh/permission/main/ip | grep $MYIP | awk '{print $3}')
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
-Name=$(curl -sS https://raw.githubusercontent.com/FanoraSsh/permission/main/ip | grep $MYIP | awk '{print $2}')
-ipsaya=$(wget -qO- ifconfig.me)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
 data_ip="https://raw.githubusercontent.com/FanoraSsh/permission/main/ip"
 checking_sc() {
-useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
+useexp=$(curl -sS $data_ip | grep $MYIP | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
 echo -ne
 else
@@ -36,7 +31,7 @@ echo -e "$COLOR1│${NC}${COLBG1}          ${WH}• AUTOSCRIPT PREMIUM •      
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│            ${RED}PERMISSION DENIED !${NC}                  $COLOR1│"
-echo -e "$COLOR1│   ${yl}Your VPS${NC} $ipsaya \033[0;36mHas been Banned ${NC}      $COLOR1│"
+echo -e "$COLOR1│   ${yl}Your VPS${NC} $MYIP \033[0;36mHas been Banned ${NC}      $COLOR1│"
 echo -e "$COLOR1│     ${yl}Buy access permissions for scripts${NC}          $COLOR1│"
 echo -e "$COLOR1│             \033[0;32mContact Your Admin ${NC}                 $COLOR1│"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
@@ -83,11 +78,6 @@ echo "" > /etc/trojan-go/trgo
 fi
 clear
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
-LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
-CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
-cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
-cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
-cpu_usage+=" %"
 vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
 vnstat -i ${vnstat_profile} >/etc/t1
 bulan=$(date +%b)
@@ -221,13 +211,14 @@ jumlah_trgo=$(grep -c -E "^### " "/etc/trojan-go/trgo")
 function m-ip2(){
 clear
 cd
+rm -rf /etc/github
 if [[ -e /etc/github/api ]]; then
 m-ip
 else
 mkdir /etc/github
-echo "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" > /etc/github/api
-echo "encitgtg1@gmail.com" > /etc/github/email
-echo "oktaviaps" > /etc/github/username
+echo "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" > /etc/github/api
+echo "hesaceza476@gmail.com" > /etc/github/email
+echo "FanoraSsh" > /etc/github/username
 m-ip
 fi
 }
@@ -235,11 +226,6 @@ uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
 upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
 uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
 cekup=`uptime -p | grep -ow "day"`
-if [ "$Isadmin" = "ON" ]; then
-uis="${COLOR1}Premium ADMIN VIP$NC"
-else
-uis="${COLOR1}Premium Version$NC"
-fi
 function m-bot2(){
 clear
 echo -e "$COLOR1╭══════════════════════════════════════════╮${NC}"
@@ -304,14 +290,13 @@ clear
 clear && clear && clear
 clear;clear;clear
 echo -e " $COLOR1╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " $COLOR1│${NC} ${COLBG1}                  ${WH} • FANORA  STORES •                   ${NC} $COLOR1│ $NC"
+echo -e " $COLOR1│${NC} ${COLBG1}               ${WH} •  FANORA  STORES •             ${NC} $COLOR1│ $NC"
 echo -e " $COLOR1╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e " $COLOR1╭══════════════════════════════════════════════════════════╮${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ OS            ${COLOR1}: ${WH}$MODEL2${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ RAM           ${COLOR1}: ${WH}$tram / $uram MB${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ DATE          ${COLOR1}: ${WH}$DATE2 WIB${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ UPTIME        ${COLOR1}: ${WH}$uphours $upminutes $uptimecek"
-#echo -e " $COLOR1│$NC${WH} ❈ TIME          ${COLOR1}: ${WH}$TIMEZONE${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ ISP           ${COLOR1}: ${WH}$ISP${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ City          ${COLOR1}: ${WH}$CITY${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ IP VPS        ${COLOR1}: ${WH}$MYIP${NC}"
@@ -322,9 +307,7 @@ echo -e "    $COLOR1╭═════════════════ • $
 echo -e "     ${WH} SSH WS : ${status_ws} ${WH} XRAY : ${status_xray} ${WH} NGINX : ${status_nginx} ${WH} DROPBEAR : ${status_beruangjatuh}$NC"
 echo -e "      ${WH} UDP CUSTOM : ${status_udp} ${WH} NOOBZVPNS : ${stat_noobz} ${WH} TROJAN-GO : ${stat_trgo} ${NC}"
 echo -e "    $COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-echo -e "        $COLOR1╭════════════════════════════════════════════╮${NC}"
-echo -e "                 $COLOR1$NC${WH}    LIST ACCOUNT PREMIUM ${NC}"
-echo -e "        $COLOR1      ═════════════════════════════════ ${NC}"
+echo -e "       $COLOR1╭════════════ •${NC} ${WH}ACCOUNT PREMIUM${NC} $COLOR1• ════════════╮${NC}"
 printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " SSH/OPVPN   =" "$total_ssh" "ACCOUNT "
 printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " VMESS/WS    =" "$vmess" "ACCOUNT "
 printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " VLESS/WS    =" "$vless" "ACCOUNT "
@@ -342,13 +325,11 @@ echo -e " $COLOR1│$NC ${WH}[${COLOR1}06${WH}]${NC} ${COLOR1}• ${WH}TROJAN-GO
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}22${WH}]${NC} ${COLOR1}• ${WH}RUNNING   ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}23${WH}]${NC} ${COLOR1}• ${WH}RESTART    ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"
 echo -e " $COLOR1╰════════════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭════════════════════ • ${WH}PANEL ADMIN VIP${NC}${COLOR1} • ════════════════╮${NC}"
-echo -e "$COLOR1│  ${WH}[${COLOR1}13${WH}]${NC} ${COLOR1}• ${WH}RESELLER IP ${WH}[${COLOR1}MENU${WH}] $COLOR1 $NC"
-ressee="m-ip2"
-bottt="m-bot"
+echo -e "$COLOR1│  ${WH}[${COLOR1}13${WH}]${NC} ${COLOR1}• ${WH}RESELLER IP ${WH}[${COLOR1}MENU${WH}] $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═════════════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│$NC  ${WH}Total    $COLOR1│${NC}     ${WH}Today       ${WH}Yesterday       ${WH}Month         ${NC}"
-echo -e "$COLOR1│$NC ${WH}Bantwidth $COLOR1│${NC}   ${WH}$today_tx $today_txv     ${WH}$yesterday_tx $yesterday_txv      ${WH}$month_tx $month_txv$COLOR1${NC}"
+echo -e "$COLOR1│$NC ${WH}Bantwidth $COLOR1│${NC}   ${WH}$today_tx $today_txv     ${WH}$yesterday_tx $yesterday_txv      ${WH}$month_tx $month_txv${NC}"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════╯${NC}"
 DATE=$(date +'%Y-%m-%d')
 datediff() {
@@ -366,25 +347,9 @@ echo "Auto-Reboot CPU 100% TURN ON."
 sleep 1
 menu
 }
-function newx(){
-clear
-until [[ $usagee =~ ^[0-9]+$ ]]; do
-read -p "kuota user format angka 1, 2 atau 3 (TERA): " usagee
-done
-echo "$usagee" > /etc/usagee
-cat> /etc/cron.d/bantwidth << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/10 * * * * root /usr/bin/bantwidth
-END
-echo "Auto-Shutdown $usagee TERA TURN ON."
-sleep 1
-menu
-}
 d1=$(date -d "$Exp2" +%s)
 d2=$(date -d "$today" +%s)
 certificate=$(( (d1 - d2) / 86400 ))
-domain=$(cat /etc/xray/domain)
 function restartservice(){    
 clear
 fun_bar() {
@@ -434,7 +399,7 @@ res1() {
 }
 clear
 echo -e "$COLOR1 ╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC} ${COLBG1}          ${WH}RESTART SERVICE VPS             ${NC} $COLOR1 $NC"
+echo -e "$COLOR1 ${NC} ${COLBG1}          ${WH}RESTART SERVICE VPS             ${NC} $NC"
 echo -e "$COLOR1 ╰══════════════════════════════════════════╯${NC}"
 echo -e ""
 echo -e "  \033[1;91m Restart All Service... \033[1;37m"
@@ -447,15 +412,15 @@ menu
 function updatews(){
 cd
 rm -rf *
-wget https://satantech.serv00.net/arthepat/menu/install-up.sh &> /dev/null
-chmod +x install_up.sh
-./install_up.sh
+wget https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/m-update.sh
+clear
+chmod +x m-update.sh && ./m-update.sh
 }
 echo -e "$COLOR1╭═════════════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│$NC ${WH} ❈ Versi   ${NC}: ${WH}$(cat /opt/.ver) Version${NC}$COLOR1"
-echo -e "$COLOR1│$NC ${WH} ❈ Client ${NC} :FanoraVip ${WH}$FANORATUNNEL${NC}"
-echo -e "$COLOR1│$NC ${WH} ❈ Durasi ${NC} : ${WH}$certificate hari${NC}$COLOR1"
-echo -e "$COLOR1│$NC ${WH} ❈ Expiry ${NC} : ${WH}$Exp2 $sts ${NC}$COLOR1"
+echo -e "$COLOR1│$NC ${WH} ❈ Versi   ${NC}: ${WH}$(cat /opt/.ver) Version${NC}"
+echo -e "$COLOR1│$NC ${WH} ❈ Client ${NC} : ${WH}$author${NC}"
+echo -e "$COLOR1│$NC ${WH} ❈ Durasi ${NC} : ${WH}$certificate hari${NC}"
+echo -e "$COLOR1│$NC ${WH} ❈ Expiry ${NC} : ${WH}$Exp2 $sts ${NC}"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════╯${NC}"
 echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
@@ -468,18 +433,13 @@ case $opt in
 06 | 6) clear ; m-trgo ;;
 07 | 7) clear ; m-bot  ;;
 08 | 8) clear ; m-bot2 ;;
-09 | 9) clear ; m-update ;;
+09 | 9) clear ; updatews ;;
 10 | 10) clear ; m-system ;;
 11 | 11) clear ; m-backup;;
 12 | 12) clear ; reboot ;;
-13 | 13) clear ; $ressee ;;
-14 | 14) clear ; key ;;
+13 | 13) clear ; m-ip2 ;;
 22 | 22) clear ; running;;
 23 | 23) clear ; restartservice ;;
-89 | 89) clear ; bannner ;;
-88 | 88) clear ; new ;;
-77 | 77) clear ; newx ;;
-100) clear ; $up2u ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu ;;
 esac

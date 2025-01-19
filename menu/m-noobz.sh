@@ -43,6 +43,10 @@ COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g
 WH='\033[1;37m'
 
 clear
+config80="EHI8+fSb67P7PMHpuZRpzz76SZia014Dg1dcao0LIlzusgVRdutuSvYgTLOI7aOjJEb2EiEaA9iP61Uq4KhAnT66TTSrSh6aSoycvGM36DDXUCQqbv8PPBIJlFtRDFgAMtYLbfV8sLnHl9ndwtalVkFAQjJmkcLIevzYj0rTkIcEavmIXq5Ki3QUf/R/gXY+DYkhRDosA98At4M2sI7YvfZRF9kWP1KocQhlpJsyKIc29WAyqY/N6wGphrzALFiSHDIHAgKLJUE/7wHYd3fLi25KYXS9VnjPmdNGrZd8HFUNNgKncF9hx8ber2K5ulxGp3CvFBED6GgQEZ3TasXt/HMt4TKP8+zkjUuwW6POPOnry5iMfpjTtcFNRfylK0Og/R9K1cU+LhRj44l/uHqMIQqqlMuZNcV2o+JL3H/KTDKbb/HsVpj6b4qkfcUC+i0hrfZpo5EoNYMsPlQspQz9y9/duKqDZyBxSQlhWJIe0N4V3lgjhd8iGdipbcCYn6EPsEZTWYeDBnhCcy6/PDTpsMLtuo8DuyuaJmQD8K19VdY/hvKCSn3x7x185L0O2PT42ldNES0+Wdqe1FQf9+nvKo+QaSgPcjNelDHoKQ=="
+config443="EDXAoS1lfpuG2aFNv9/JydAFrlyDgS+Rhk448ZjJTcTrSfSDE3MgR/4ZTAC43fZnzKwctT8qC6brSbfZy6xY5cGSUwAwUO4VifObD57+JT3G1dVnE6VR+e7B4NbLKxV98NvN8SguvBz9yj8D736/TCU7UGGOVUMdrJBT23FbnFGs1M1+sshSGsYbX7LKyMKQcF5yrgc5FI1z8/5jtc2uatsQ82OCSRWlCtok1Fa5m7RMA46TmiAWEQvRRHhVBbmHuP9ii+BPZH3ZPRF1X/cmv1jbBFYzVe1jqtztY4IBZUya4gF4XtaXb38w4O+pIIBB2q4lx6sAzu0quIMeXGBnvmOvKl3xmlbcfbDY0tilGX/xaIEfwqBx4WSkxsWv+Mr4GJzakFRVqSxftgWHf0Tpen1xyTwRK9HlF9k+TVFZvc6OFG53V49b2kL46+PwVZARV6M2Xc1JXv0QRlFMQeymIBDQXSZchTvHQSiMk02XsVe+9e0N2/q1uvI1c5e9tFnxKS4AjBHXEksfTTlK3UgIl4AzJn5thf3iCEJN2g4jnt1Eo58XCpbiH3AOOjsr63y9LNIICFk0CD9Atx9G9qpGIdG7At2WbLVFZEOp0JzmCB8omA4bvLV92+ER35OOXu1JmFjRz48tx5jZVQlM5WYv692Gt8/ZkC95Nn4PXNJlBSalzmIxAQkzYYSxP8vOJDl5I8Lqf6kJFlrHiKAQbIbKF0Y="
+pylod80="GET / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf][crlf]"
+pylod443="GET /cdn-cgi/trace HTTP/1.1[crlf]Host: ISI BUG MU [crlf][crlf]CF-RAY / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
 author=$(cat /etc/profil)
@@ -82,33 +86,6 @@ exp="$(chage -l $user | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$pass\n$pass\n"|passwd $user &> /dev/null
 echo -e "### $user $expi $pass" >> /etc/xray/noob
 clear
-cat > /home/vps/public_html/noobzvpns-$user.txt <<-END
-◇━━━━━━━━━━━━━━━━━◇
-NOOBZVPN ACCOUNT
-◇━━━━━━━━━━━━━━━━━◇
-DOMAIN : $domain
-USERNAME : $user
-PASSWORD : $pass
-IP LIMIT : $ip
-EXP DAYS : $expi ( $exp Days )
-tcp_std port :  8080
-tcp_ssl port : 8443
-◇━━━━━━━━━━━━━━━━━◇
-Example config TCP_STD 8080
-◇━━━━━━━━━━━━━━━━━◇
-
-EB4cHVzsbaIHhGlETDO+Ck22fVlOm01SEuUAUWIilUiZj3ho/GZ5QY+Fdur7EGcHtimx0bRpPkPYSUVldGNLCXsFP3XfuuhmgsFMFK/RNdCJO1dF1LdAFlB4FSpoxofkIxg4/ot5WJVEGKPxuK7M3hm+93/8mTKR7LO196KrYbIcDbZtui7+g0u03le97wfPfnjHgd5YVflwaagi6T1PU2z5nXp0sLPrwKY5mdvmQu2QVAiMGE/ZqdjM1m2kcYDaecChWbLz4FiMVQBjEqa5G4h7zjBmxBtXFpWvOyApTfPIKK44eBHxKoLc7FXjaEFw7ONqexhB3svRPND1XR9VtkISZLEwrXQPPv1OO2pzOaS7unutCaP7pxQoTaChCn9Z2tN5tKDn8UsB/p8ouoLZPH4g83fYzO28dV2SC064+S3PLo6MlZxmlGuBUdhPuKgrfK+Rbejas7Z8GnCglJLUyTcwuynoFQiNVqiP64hMnvB9hSNl6YDQeST20ydA8dMIG7Jg8PJ52MRO5GIxNwl9y3ut7mPrn/+ia+rgoH+kz4mww6SBEy15TeXss7ZMYZcGj7A1vtTFOfCBvvqRgBxpQ6ZPcPX2+ohuC16/fQ==
-
-◇━━━━━━━━━━━━━━━━━◇
-Example config TCP_SSL 8443
-◇━━━━━━━━━━━━━━━━━◇
-
-EMLBHFZfH/pBoPKJNWEVgBpE6A5ZeWbnzpI4w7UFL3EEDLbefWsxq308yXcLl9+eH0CAwm6hLFDAIEZtscw6w090SyqPTK1iZxg/XVhQupV+3gkyTy/t3OeJcEGNfgOGuBGi5HVxQNiBrKIo8gQnVnR5oDVf80HbwVUHYNiayk9B8cqGRlr8bHTMs6GcevwhgWRUhOYitN20pcF91SXkQd86eIFfMVVFpM2MkRqOiL4+ZWS1GrH+r4YVC69Q50xyZAfUm+Ps17bY3hH7qcha1o2OD8RhjYqGnRzJDJEh7tfnDG6GyLgKPk+A8wxLkd+oTDKOMMsEyFA6x2NolzEYNYIsn5C2QBlEm5NAb8RJmCkFVL+L+ekiUp0NvkIRSjhVbhcl/n1CkBWkcOPYLCwyIagNJrCoD6vkoGzprqS3IAbj7RkOQqmLquAlfeEgDk6UJao/BZaoZeeIlfhDgfATDZiooLECs/h+0/2Vff1E5wnoHovDDo3FZW8xbxXXazHWdYWg8BOU3sATfhnbZd6uWsPmAg6r3jGynibibNbO1r/n88vbvB8Au319VN8KRLI4FhPc/Z9KG+njTJkmiLoG33SbPU7fF8AP
-
-◇━━━━━━━━━━━━━━━━━◇
- • SFVPN TUNNELING • 
-◇━━━━━━━━━━━━━━━━━◇
-END
 if [[ -e /etc/noobz ]]; then
 TEXT="
 ◇━━━━━━━━━━━━━━━━━◇
@@ -125,16 +102,16 @@ tcp_ssl port : 8443
 Example config TCP_STD 8080
 ◇━━━━━━━━━━━━━━━━━◇
 
-<code>EB4cHVzsbaIHhGlETDO+Ck22fVlOm01SEuUAUWIilUiZj3ho/GZ5QY+Fdur7EGcHtimx0bRpPkPYSUVldGNLCXsFP3XfuuhmgsFMFK/RNdCJO1dF1LdAFlB4FSpoxofkIxg4/ot5WJVEGKPxuK7M3hm+93/8mTKR7LO196KrYbIcDbZtui7+g0u03le97wfPfnjHgd5YVflwaagi6T1PU2z5nXp0sLPrwKY5mdvmQu2QVAiMGE/ZqdjM1m2kcYDaecChWbLz4FiMVQBjEqa5G4h7zjBmxBtXFpWvOyApTfPIKK44eBHxKoLc7FXjaEFw7ONqexhB3svRPND1XR9VtkISZLEwrXQPPv1OO2pzOaS7unutCaP7pxQoTaChCn9Z2tN5tKDn8UsB/p8ouoLZPH4g83fYzO28dV2SC064+S3PLo6MlZxmlGuBUdhPuKgrfK+Rbejas7Z8GnCglJLUyTcwuynoFQiNVqiP64hMnvB9hSNl6YDQeST20ydA8dMIG7Jg8PJ52MRO5GIxNwl9y3ut7mPrn/+ia+rgoH+kz4mww6SBEy15TeXss7ZMYZcGj7A1vtTFOfCBvvqRgBxpQ6ZPcPX2+ohuC16/fQ==</code>
+<code>$pylod80</code>
 
 ◇━━━━━━━━━━━━━━━━━◇
 Example config TCP_SSL 8443
 ◇━━━━━━━━━━━━━━━━━◇
 
-<code>EMLBHFZfH/pBoPKJNWEVgBpE6A5ZeWbnzpI4w7UFL3EEDLbefWsxq308yXcLl9+eH0CAwm6hLFDAIEZtscw6w090SyqPTK1iZxg/XVhQupV+3gkyTy/t3OeJcEGNfgOGuBGi5HVxQNiBrKIo8gQnVnR5oDVf80HbwVUHYNiayk9B8cqGRlr8bHTMs6GcevwhgWRUhOYitN20pcF91SXkQd86eIFfMVVFpM2MkRqOiL4+ZWS1GrH+r4YVC69Q50xyZAfUm+Ps17bY3hH7qcha1o2OD8RhjYqGnRzJDJEh7tfnDG6GyLgKPk+A8wxLkd+oTDKOMMsEyFA6x2NolzEYNYIsn5C2QBlEm5NAb8RJmCkFVL+L+ekiUp0NvkIRSjhVbhcl/n1CkBWkcOPYLCwyIagNJrCoD6vkoGzprqS3IAbj7RkOQqmLquAlfeEgDk6UJao/BZaoZeeIlfhDgfATDZiooLECs/h+0/2Vff1E5wnoHovDDo3FZW8xbxXXazHWdYWg8BOU3sATfhnbZd6uWsPmAg6r3jGynibibNbO1r/n88vbvB8Au319VN8KRLI4FhPc/Z9KG+njTJkmiLoG33SbPU7fF8AP</code>
+<code>$pylod443</code>
 
 ◇━━━━━━━━━━━━━━━━━◇
- • SFVPN TUNNELING • 
+ • FANORA STORES • 
 ◇━━━━━━━━━━━━━━━━━◇
 "
 else
@@ -153,16 +130,16 @@ tcp_ssl port : 8443
 Example config TCP_STD 8080
 ◇━━━━━━━━━━━━━━━━━◇
 
-<code>EB4cHVzsbaIHhGlETDO+Ck22fVlOm01SEuUAUWIilUiZj3ho/GZ5QY+Fdur7EGcHtimx0bRpPkPYSUVldGNLCXsFP3XfuuhmgsFMFK/RNdCJO1dF1LdAFlB4FSpoxofkIxg4/ot5WJVEGKPxuK7M3hm+93/8mTKR7LO196KrYbIcDbZtui7+g0u03le97wfPfnjHgd5YVflwaagi6T1PU2z5nXp0sLPrwKY5mdvmQu2QVAiMGE/ZqdjM1m2kcYDaecChWbLz4FiMVQBjEqa5G4h7zjBmxBtXFpWvOyApTfPIKK44eBHxKoLc7FXjaEFw7ONqexhB3svRPND1XR9VtkISZLEwrXQPPv1OO2pzOaS7unutCaP7pxQoTaChCn9Z2tN5tKDn8UsB/p8ouoLZPH4g83fYzO28dV2SC064+S3PLo6MlZxmlGuBUdhPuKgrfK+Rbejas7Z8GnCglJLUyTcwuynoFQiNVqiP64hMnvB9hSNl6YDQeST20ydA8dMIG7Jg8PJ52MRO5GIxNwl9y3ut7mPrn/+ia+rgoH+kz4mww6SBEy15TeXss7ZMYZcGj7A1vtTFOfCBvvqRgBxpQ6ZPcPX2+ohuC16/fQ==</code>
+<code>$pylod80</code>
 
 ◇━━━━━━━━━━━━━━━━━◇
 Example config TCP_SSL 8443
 ◇━━━━━━━━━━━━━━━━━◇
 
-<code>EMLBHFZfH/pBoPKJNWEVgBpE6A5ZeWbnzpI4w7UFL3EEDLbefWsxq308yXcLl9+eH0CAwm6hLFDAIEZtscw6w090SyqPTK1iZxg/XVhQupV+3gkyTy/t3OeJcEGNfgOGuBGi5HVxQNiBrKIo8gQnVnR5oDVf80HbwVUHYNiayk9B8cqGRlr8bHTMs6GcevwhgWRUhOYitN20pcF91SXkQd86eIFfMVVFpM2MkRqOiL4+ZWS1GrH+r4YVC69Q50xyZAfUm+Ps17bY3hH7qcha1o2OD8RhjYqGnRzJDJEh7tfnDG6GyLgKPk+A8wxLkd+oTDKOMMsEyFA6x2NolzEYNYIsn5C2QBlEm5NAb8RJmCkFVL+L+ekiUp0NvkIRSjhVbhcl/n1CkBWkcOPYLCwyIagNJrCoD6vkoGzprqS3IAbj7RkOQqmLquAlfeEgDk6UJao/BZaoZeeIlfhDgfATDZiooLECs/h+0/2Vff1E5wnoHovDDo3FZW8xbxXXazHWdYWg8BOU3sATfhnbZd6uWsPmAg6r3jGynibibNbO1r/n88vbvB8Au319VN8KRLI4FhPc/Z9KG+njTJkmiLoG33SbPU7fF8AP</code>
+<code>$pylod443</code>
 
 ◇━━━━━━━━━━━━━━━━━◇
- • SFVPN TUNNELING • 
+ • FANORA STORES • 
 ◇━━━━━━━━━━━━━━━━━◇
 "
 fi
@@ -203,16 +180,16 @@ echo -e "◇━━━━━━━━━━━━━━━━━◇" | tee -a /et
 echo -e "Example config TCP_STD 8080" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo -e "◇━━━━━━━━━━━━━━━━━◇" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo "" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
-echo -e "EB4cHVzsbaIHhGlETDO+Ck22fVlOm01SEuUAUWIilUiZj3ho/GZ5QY+Fdur7EGcHtimx0bRpPkPYSUVldGNLCXsFP3XfuuhmgsFMFK/RNdCJO1dF1LdAFlB4FSpoxofkIxg4/ot5WJVEGKPxuK7M3hm+93/8mTKR7LO196KrYbIcDbZtui7+g0u03le97wfPfnjHgd5YVflwaagi6T1PU2z5nXp0sLPrwKY5mdvmQu2QVAiMGE/ZqdjM1m2kcYDaecChWbLz4FiMVQBjEqa5G4h7zjBmxBtXFpWvOyApTfPIKK44eBHxKoLc7FXjaEFw7ONqexhB3svRPND1XR9VtkISZLEwrXQPPv1OO2pzOaS7unutCaP7pxQoTaChCn9Z2tN5tKDn8UsB/p8ouoLZPH4g83fYzO28dV2SC064+S3PLo6MlZxmlGuBUdhPuKgrfK+Rbejas7Z8GnCglJLUyTcwuynoFQiNVqiP64hMnvB9hSNl6YDQeST20ydA8dMIG7Jg8PJ52MRO5GIxNwl9y3ut7mPrn/+ia+rgoH+kz4mww6SBEy15TeXss7ZMYZcGj7A1vtTFOfCBvvqRgBxpQ6ZPcPX2+ohuC16/fQ==" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
+echo -e "$config80" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo "" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo -e "◇━━━━━━━━━━━━━━━━━◇" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo -e "Example config TCP_SSL 8443" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo -e "◇━━━━━━━━━━━━━━━━━◇" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo "" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
-echo -e "EMLBHFZfH/pBoPKJNWEVgBpE6A5ZeWbnzpI4w7UFL3EEDLbefWsxq308yXcLl9+eH0CAwm6hLFDAIEZtscw6w090SyqPTK1iZxg/XVhQupV+3gkyTy/t3OeJcEGNfgOGuBGi5HVxQNiBrKIo8gQnVnR5oDVf80HbwVUHYNiayk9B8cqGRlr8bHTMs6GcevwhgWRUhOYitN20pcF91SXkQd86eIFfMVVFpM2MkRqOiL4+ZWS1GrH+r4YVC69Q50xyZAfUm+Ps17bY3hH7qcha1o2OD8RhjYqGnRzJDJEh7tfnDG6GyLgKPk+A8wxLkd+oTDKOMMsEyFA6x2NolzEYNYIsn5C2QBlEm5NAb8RJmCkFVL+L+ekiUp0NvkIRSjhVbhcl/n1CkBWkcOPYLCwyIagNJrCoD6vkoGzprqS3IAbj7RkOQqmLquAlfeEgDk6UJao/BZaoZeeIlfhDgfATDZiooLECs/h+0/2Vff1E5wnoHovDDo3FZW8xbxXXazHWdYWg8BOU3sATfhnbZd6uWsPmAg6r3jGynibibNbO1r/n88vbvB8Au319VN8KRLI4FhPc/Z9KG+njTJkmiLoG33SbPU7fF8AP" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
+echo -e "$config443" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo "" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo -e "◇━━━━━━━━━━━━━━━━━◇" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
-echo -e " • SFVPN TUNNELING •" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
+echo -e " • FANORA STORES •" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 echo -e "◇━━━━━━━━━━━━━━━━━◇" | tee -a /etc/xray/noobz/akun/log-create-${user}.log
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -224,10 +201,31 @@ clear
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}              ${WH}• DELETE NOOBZ •                   ${NC}$COLOR1 │ $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-grep -E "^### " "/etc/xray/noob" | cut -d ' ' -f 2-3 | nl -s ') '
-read -p "username :" user
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/noob")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+		echo "You have no existing clients!"
+		exit 1
+	fi
+	echo "Select The Existing Client You Want To Remove"
+	echo " Press CTRL+C to return"
+	echo " ==============================="
+	echo "     No  User   Expired"
+	grep -E "^### " "/etc/xray/noob" | cut -d ' ' -f 2-3 | nl -s ') '
+	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+		if [[ ${CLIENT_NUMBER} == '1' ]]; then
+			read -rp "Select one client [1]: " CLIENT_NUMBER
+		else
+			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+		fi
+	done
+CLIENT_NAME=$(grep -E "^### " "/etc/xray/noob" | cut -d ' ' -f 2-3 | sed -n "${CLIENT_NUMBER}"p)
+user=$(grep -E "^### " "/etc/xray/noob" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
+exp=$(grep -E "^### " "/etc/xray/noob" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
+sed -i "/^### $user $exp/d" /etc/xray/noob
+sed -i '/^,"'"$user"'"$/d' /etc/noobzvpns/users.json
 noobzvpns --remove-user $user
 expi=`date -d "$exp days" +"%Y-%m-%d"`
+systemctl restart noobzvpns
 clear
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}              ${WH}• DELETE NOOBZ •                   ${NC}$COLOR1 │ $NC"
@@ -236,27 +234,9 @@ echo -e ""
 echo -e "$WH USERNAME $user HAS BEEN DELETE $NC"
 echo -e "$WH EXPIRED : $expi $NC"
 echo -e ""
-TEXT="
-<code>◇━━━━━━━━━━━━━━◇</code>
-<code>  DELETE NOOBZVPNS</code>
-<code>◇━━━━━━━━━━━━━━◇</code>
-<code>DOMAIN   :</code> <code>${domain} </code>
-<code>ISP      :</code> <code>$ISP $CITY </code>
-<code>USERNAME :</code> <code>$user</code>
-<code>EXPIRED  :</code> <code>$expi </code>
-<code>◇━━━━━━━━━━━━━━◇</code>
-<i>Succes Delete This User...</i>
-"
-curl -s --max-time $TIMES -d "chat_id=$CHATIDNEW&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 cd
-if [ ! -e /etc/tele ]; then
-echo -ne
-else
-echo "$TEXT" > /etc/notiftele
-bash /etc/tele
-fi
 echo -e "$COLOR1╭══════════════════════ • ${WH}BY${NC}${COLOR1} • ═══════════════════════╮${NC}"
-echo -e "$COLOR1${NC}          ${WH}   • Satan Fusion Tunneling •                 $COLOR1 $NC"
+echo -e "$COLOR1${NC}          ${WH}   • Fanora Stores Premium •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════╯${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -278,7 +258,7 @@ echo -e "$COLOR1╰════════════════════�
 echo "USERNAME: $user"
 echo "renew success!!"
 echo -e "$COLOR1╭══════════════════════ • ${WH}BY${NC}${COLOR1} • ═══════════════════════╮${NC}"
-echo -e "$COLOR1${NC}          ${WH}   • Satan Fusion Tunneling •                 $COLOR1 $NC"
+echo -e "$COLOR1${NC}          ${WH}   • Fanora Stores Premium •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════╯${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -301,7 +281,7 @@ echo -e "$COLOR1╰════════════════════�
 echo "USERNAME: $user"
 echo "locked success!!"
 echo -e "$COLOR1╭══════════════════════ • ${WH}BY${NC}${COLOR1} • ═══════════════════════╮${NC}"
-echo -e "$COLOR1${NC}          ${WH}   • Satan Fusion Tunneling •                 $COLOR1 $NC"
+echo -e "$COLOR1${NC}          ${WH}   • Fanora Stores Premium •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════╯${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -321,7 +301,7 @@ echo -e "$COLOR1╰════════════════════�
 noobzvpns --info-all-user | awk '/^\s*\+.*-> active/ {gsub(/(issued\(yyyymmdd\)|hash_key): [0-9a-f]+/, ""); print; getline; print; getline; getline; getline; print; print "═══════════════════"}'
 
 echo -e "$COLOR1╭══════════════════════ • ${WH}BY${NC}${COLOR1} • ═══════════════════════╮${NC}"
-echo -e "$COLOR1${NC}          ${WH}   • Satan Fusion Tunneling •                 $COLOR1 $NC"
+echo -e "$COLOR1${NC}          ${WH}   • Fanora Stores Premium •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════╯${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -344,7 +324,7 @@ echo -e "$COLOR1╰════════════════════�
 echo "USERNAME: $user"
 echo "unlocked success!!"
 echo -e "$COLOR1╭══════════════════════ • ${WH}BY${NC}${COLOR1} • ═══════════════════════╮${NC}"
-echo -e "$COLOR1${NC}          ${WH}   • Satan Fusion Tunneling •                 $COLOR1 $NC"
+echo -e "$COLOR1${NC}          ${WH}   • Fanora Stores Premium •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════╯${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -378,7 +358,7 @@ echo -e "$COLOR1╰════════════════════�
 echo "USERNAME: $user"
 echo "unlocked success!!"
 echo -e "$COLOR1╭══════════════════════ • ${WH}BY${NC}${COLOR1} • ═══════════════════════╮${NC}"
-echo -e "$COLOR1${NC}          ${WH}   • Satan Fusion Tunneling •                 $COLOR1 $NC"
+echo -e "$COLOR1${NC}          ${WH}   • Fanora Stores Premium •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════╯${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -398,7 +378,7 @@ echo -e "$COLOR1│ $NC  ${WH}[${COLOR1}03${WH}]${NC} ${COLOR1}• ${WH}RENEW AK
 echo -e "$COLOR1│ $NC  ${WH}[${COLOR1}00${WH}]${NC} ${COLOR1}• ${WH}GO BACK${NC}       ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}REMOVE ALL USER${NC}    $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═════════════════════ • ${WH}BY${NC}${COLOR1} • ══════════════════════╮${NC}"
-echo -e "$COLOR1${NC}          ${WH}   • Satan Fusion Tunneling •                 $COLOR1 $NC"
+echo -e "$COLOR1${NC}          ${WH}   • FANORA Stores Premium •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt

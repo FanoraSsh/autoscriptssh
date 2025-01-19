@@ -32,7 +32,7 @@ checking_sc() {
         echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
         echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
         echo -e "             \033[0;33mContact Admin :${NC}"
-        echo -e "     \033[0;36mTelegram${NC}: https://t.me/FanoraVpnTunnel"
+        echo -e "     \033[0;36mTelegram${NC}: https://t.me/FanoraSsh"
         echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
         exit
     fi
@@ -93,25 +93,15 @@ nontls_v2ray_status=$(systemctl status xray | grep Active | awk '{print $3}' | c
 vless_tls_v2ray_status=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 vless_nontls_v2ray_status=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 shadowsocks=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#ssr_status=$(systemctl status ssrmu | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 trojan_server=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 dropbear_status=$(/etc/init.d/dropbear status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 stunnel_service=$(/etc/init.d/stunnel4 status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#sstp_service=$(systemctl status accel-ppp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#squid_service=$(/etc/init.d/squid status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 ssh_service=$(/etc/init.d/ssh status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 vnstat_service=$(/etc/init.d/vnstat status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 cron_service=$(/etc/init.d/cron status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 fail2ban_service=$(/etc/init.d/fail2ban status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#wg="$(systemctl show wg-quick@wg0.service --no-page)"
-#swg=$(echo "${wg}" | grep 'ActiveState=' | cut -f2 -d=)
-#trgo="$(systemctl show trojan-go.service --no-page)"
-#strgo=$(echo "${trgo}" | grep 'ActiveState=' | cut -f2 -d=)
-#sswg=$(systemctl status wg-quick@wg0 | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 wstls=$(systemctl status ws-stunnel.service | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#wsdrop=$(systemctl status ws-dropbear.service | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 wsovpn=$(systemctl status ws-ovpn | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#wsopen=$(systemctl status ws-openssh | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 osslh=$(systemctl status sslh | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 udp=$(systemctl status udp-custom | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 sls=$(systemctl status server | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
@@ -231,13 +221,6 @@ else
    swstls="${RED}Offline ${NC}"
 fi
 
-# STATUS SERVICE WEBSOCKET DROPBEAR
-#if [[ $wsdrop == "running" ]]; then
- #  swsdrop=" ${GREEN}Online ${NC}"
-#else
-#   swsdrop="${RED}Offline ${NC}"
-#fi
-
 # STATUS SERVICE SSLH / SSH
 if [[ $osslh == "running" ]]; then 
    sosslh=" ${GREEN}Online ${NC}"
@@ -293,23 +276,6 @@ fi
 total_ram=`grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 totalram=$(($total_ram/1024))
 
-# TIPE PROCESSOR
-#totalcore="$(grep -c "^processor" /proc/cpuinfo)"
-#totalcore+=" Core"
-#corediilik="$(grep -c "^processor" /proc/cpuinfo)"
-#tipeprosesor="$(awk -F ': | @' '/model name|Processor|^cpu model|chip type|^cpu type/ {
-  #                      printf $2;
-      #                  exit
-    #                    }' /proc/cpuinfo)"
-
-# GETTING CPU INFORMATION
-#cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
-#cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
-#cpu_usage+=" %"
-
-# OS UPTIME
-#uptime="$(uptime -p | cut -d " " -f 2-10)"
-
 # KERNEL TERBARU
 kernelku=$(uname -r)
 
@@ -323,7 +289,7 @@ datediff() {
 mai="datediff "$Exp" "$DATE""
 
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp2=$(curl -sS https://raw.githubusercontent.com/FanoraSsh/permission/main/ip | grep $MYIP | awk '{print $3}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/king-vpn/permission/main/ip | grep $MYIP | awk '{print $3}')
 
 # CERTIFICATE STATUS
 d1=$(date -d "$Exp2" +%s)
@@ -332,79 +298,13 @@ certificate=$(( (d1 - d2) / 86400 ))
 
 # DNS PATCH
 #tipeos2=$(uname -m)
-Name2=$(curl -sS https://raw.githubusercontent.com/FanoraSsh/permission/main/ip | grep $MYIP | awk '{print $2}')
+Name2=$(curl -sS https://raw.githubusercontent.com/king-vpn/permission/main/ip | grep $MYIP | awk '{print $2}')
 # GETTING DOMAIN NAME
 Domen="$(cat /etc/xray/domain)"
-
-function restartservice(){    
-clear
-fun_bar() {
-    CMD[0]="$1"
-    CMD[1]="$2"
-    (
-        [[ -e $HOME/fim ]] && rm $HOME/fim
-        ${CMD[0]} -y >/dev/null 2>&1
-        ${CMD[1]} -y >/dev/null 2>&1
-        touch $HOME/fim
-    ) >/dev/null 2>&1 &
-    tput civis
-    echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
-    while true; do
-        for ((i = 0; i < 18; i++)); do
-            echo -ne "\033[0;32m#"
-            sleep 0.1s
-        done
-        [[ -e $HOME/fim ]] && rm $HOME/fim && break
-        echo -e "\033[0;33m]"
-        sleep 1s
-        tput cuu1
-        tput dl1
-        echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
-    done
-    echo -e "\033[0;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
-    tput cnorm
-}
-res1() {
-    systemctl restart nginx
-    systemctl restart xray
-    systemctl restart noobzvpns
-    systemctl restart daemon
-    systemctl restart stunnel4
-    systemctl restart udp-custom
-    systemctl restart ws-dropbear
-    systemctl restart ws-stunnel
-    systemctl restart openvpn
-    systemctl restart cron
-    systemctl restart netfilter-persistent
-    systemctl restart squid
-    systemctl restart badvpn1
-    systemctl restart badvpn2
-    systemctl restart badvpn3
-    systemctl restart client
-    systemctl restart server
-}
-clear
-echo -e "$COLOR1 ╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC} ${COLBG1}          ${WH}RESTART SERVICE VPS             ${NC} $COLOR1 $NC"
-echo -e "$COLOR1 ╰══════════════════════════════════════════╯${NC}"
-echo -e ""
-echo -e "  \033[1;91m Restart All Service... \033[1;37m"
-fun_bar 'res1'
-
-echo -e ""
-read -n 1 -s -r -p "Press [ Enter ] to back on menu"
-menu
-}
-
-clear
-clear
-clear
-clear
 echo -e ""
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}               ${WH}⇱ SYSTEM INFORMATION ⇲            ${NC}${COLOR1} │$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-#echo -e " $COLOR1 $NC                                              ${NC} $COLOR1 $NC"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ Hostname    ${COLOR1}: ${WH}$HOSTNAME$NC"
 echo -e "$COLOR1 $NC  ${WH}❈ OS Name     ${COLOR1}: ${WH}$Tipe$NC"
@@ -412,29 +312,23 @@ echo -e "$COLOR1 $NC  ${WH}❈ Total RAM   ${COLOR1}: ${WH}${totalram}MB$NC"
 echo -e "$COLOR1 $NC  ${WH}❈ Public IP   ${COLOR1}: ${WH}$MYIP$NC"
 echo -e "$COLOR1 $NC  ${WH}❈ Domain      ${COLOR1}: ${WH}$Domen$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-#echo -e " $COLOR1 $NC                                              ${NC} $COLOR1 $NC"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}          ${WH}⇱ SUBSCRIPTION INFORMATION ⇲           ${NC}${COLOR1} │$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-#echo -e " $COLOR1 $NC                                              ${NC} $COLOR1 $NC"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ $NC ${WH}❈ Client Name ${COLOR1}: ${WH}$Name2${NC}"
 echo -e "$COLOR1│ $NC ${WH}❈ License     ${COLOR1}: ${WH}$certificate days${NC}"
-echo -e "$COLOR1│ $NC ${WH}❈ Version     ${COLOR1}: ${WH}$(cat /opt/.ver) Latest Version${NC}"
+echo -e "$COLOR1│ $NC ${WH}❈ Version     ${COLOR1}: ${WH}$(cat /opt/.ver) Version${NC}"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-#echo -e " $COLOR1 $NC                                              ${NC} $COLOR1 $NC"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}              ${WH}⇱ SERVICE INFORMATION ⇲            ${NC}${COLOR1} │$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-#echo -e " $COLOR1 $NC                                              ${NC} $COLOR1 $NC"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ SSH / TUN               ${COLOR1}: ${WH}$status_ssh${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ OpenVPN                 ${COLOR1}: ${WH}$status_openvpn${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ Dropbear                ${COLOR1}: ${WH}$status_beruangjatuh${NC}"
-#echo -e "$COLOR1 $NC  ${WH}❈ Fail2Ban                ${COLOR1}: ${WH}$status_fail2ban${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ Crons                   ${COLOR1}: ${WH}$status_cron${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ Vnstat                  ${COLOR1}: ${WH}$status_vnstat${NC}"
-#echo -e "$COLOR1 $NC  ${WH}❈ Squid                   ${COLOR1}: ${WH}$status_squid${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ XRAYS Vmess TLS         ${COLOR1}: ${WH}$status_tls_v2ray${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ XRAYS Vmess None TLS    ${COLOR1}: ${WH}$status_nontls_v2ray${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ XRAYS Vless TLS         ${COLOR1}: ${WH}$status_tls_vless${NC}"
@@ -447,9 +341,7 @@ echo -e "$COLOR1 $NC  ${WH}❈ Websocket None TLS      ${COLOR1}: ${WH}$swstls${
 echo -e "$COLOR1 $NC  ${WH}❈ NOOBZVPNS               ${COLOR1}: ${WH}$noobz${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ TROJAN-GO               ${COLOR1}: ${WH}$status_trgo${NC}"
 echo -e "$COLOR1 $NC  ${WH}❈ SSH UDP COSTUM          ${COLOR1}: ${WH}$udp${NC}"
-#echo -e "🔱 SSL / SSH Multiplexer   :$sosslh"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-#echo -e " $COLOR1 $NC                                              ${NC} $COLOR1 $NC"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}              ${WH}⇱ AUTOSCRIPT PREMIUM ⇲             ${NC}${COLOR1} │$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"

@@ -8,6 +8,7 @@ RED="\033[0;31m"
 COLOR1="$(cat /etc/rmbl/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
 COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
+repo="https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/"
 ###########- END COLOR CODE -##########
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC} ${COLBG1}                 ${WH}⇱ UPDATE ⇲                    ${NC} $COLOR1 $NC"
@@ -119,59 +120,51 @@ fun_bar() {
 }
 res1() {
     
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/menu.sh" && chmod +x /usr/bin/menu
-wget -q -O /usr/bin/m-trgo "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-trgo.sh" && chmod +x /usr/bin/m-trgo
-wget -q -O /usr/bin/restore "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/restore.sh" && chmod +x /usr/bin/restore
-wget -q -O /usr/bin/backup "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/backup.sh" && chmod +x /usr/bin/backup
-wget -q -O /usr/bin/addnoobz "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/bot/addnoobz.sh" && chmod +x /usr/bin/addnoobz
-wget -q -O /usr/bin/cek-noobz "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/bot/cek-noobz.sh" && chmod +x /usr/bin/cek-noobz
-wget -q -O /usr/bin/m-noobz "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-noobz.sh" && chmod +x /usr/bin/m-noobz
-wget -q -O /usr/bin/m-ip "https://raw.githubusercontent.com/FanoraSsh/autoscript-vip/main/menu/m-ip.sh" && chmod +x /usr/bin/m-ip
-wget -q -O /usr/bin/m-bot "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-bot.sh" && chmod +x /usr/bin/m-bot
-wget -q -O /usr/bin/update "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/update.sh" && chmod +x /usr/bin/update
-wget -q -O /usr/bin/m-theme "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-theme.sh" && chmod +x /usr/bin/m-theme
-wget -q -O /usr/bin/m-vmess "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-vmess.sh" && chmod +x /usr/bin/m-vmess
-wget -q -O /usr/bin/m-vless "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-vless.sh" && chmod +x /usr/bin/m-vless
-wget -q -O /usr/bin/m-trojan "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-trojan.sh" && chmod +x /usr/bin/m-trojan
-wget -q -O /usr/bin/m-system "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-system.sh" && chmod +x /usr/bin/m-system
-wget -q -O /usr/bin/m-sshovpn "https://raw.githubusercontent.com/FanoraSsh/autoscript-vip/main/menu/m-sshovpn.sh" && chmod +x /usr/bin/m-sshovpn
-wget -q -O /usr/bin/m-ssws "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-ssws.sh" && chmod +x /usr/bin/m-ssws
-wget -q -O /usr/bin/running "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/running.sh" && chmod +x /usr/bin/running
-wget -q -O /usr/bin/m-backup "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-backup.sh" && chmod +x /usr/bin/m-backup
-wget -q -O /usr/bin/m-update "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-update.sh" && chmod +x /usr/bin/m-update
-wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/speedtest_cli.py" && chmod +x /usr/bin/speedtest
-wget -q -O /usr/bin/bckpbot "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/bckpbot.sh" && chmod +x /usr/bin/bckpbot
-wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/tendang.sh" && chmod +x /usr/bin/tendang
-wget -q -O /usr/bin/bottelegram "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/bottelegram.sh" && chmod +x /usr/bin/bottelegram
-wget -q -O /usr/bin/m-allxray "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/m-allxray.sh" && chmod +x /usr/bin/m-allxray
-wget -q -O /usr/bin/xraylimit "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/xraylimit.sh" && chmod +x /usr/bin/xraylimit
-wget -q -O /usr/bin/trialvmess "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/trialvmess.sh" && chmod +x /usr/bin/trialvmess
-wget -q -O /usr/bin/trialvless "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/trialtrojan.sh" && chmod +x /usr/bin/trialtrojan
-wget -q -O /usr/bin/trialtrojan "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/trialvless.sh" && chmod +x /usr/bin/trialvless
-wget -q -O /usr/bin/trialssh "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/menu/trialssh.sh" && chmod +x /usr/bin/trialssh
-wget -q -O /usr/bin/autocpu "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/install/autocpu.sh" && chmod +x /usr/bin/autocpu
-wget -q -O /usr/bin/bantwidth "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/install/bantwidth" && chmod +x /usr/bin/bantwidth
+wget -q -O /usr/bin/menu "${repo}menu/menu.sh" && chmod +x /usr/bin/menu
+wget -q -O /usr/bin/m-trgo "${repo}menu/m-trgo.sh" && chmod +x /usr/bin/m-trgo
+wget -q -O /usr/bin/restore "${repo}menu/restore.sh" && chmod +x /usr/bin/restore
+wget -q -O /usr/bin/backup "${repo}menu/backup.sh" && chmod +x /usr/bin/backup
+wget -q -O /usr/bin/addnoobz "${repo}bot/addnoobz.sh" && chmod +x /usr/bin/addnoobz
+wget -q -O /usr/bin/cek-noobz "${repo}bot/cek-noobz.sh" && chmod +x /usr/bin/cek-noobz
+wget -q -O /usr/bin/m-noobz "${repo}menu/m-noobz.sh" && chmod +x /usr/bin/m-noobz
+wget -q -O /usr/bin/m-ip "${repo}menu/m-ip.sh" && chmod +x /usr/bin/m-ip
+wget -q -O /usr/bin/m-bot "${repo}menu/m-bot.sh" && chmod +x /usr/bin/m-bot
+wget -q -O /usr/bin/m-theme "${repo}m-theme.sh" && chmod +x /usr/bin/m-theme
+wget -q -O /usr/bin/m-vmess "${repo}menu/m-vmess.sh" && chmod +x /usr/bin/m-vmess
+wget -q -O /usr/bin/m-vless "${repo}menu/m-vless.sh" && chmod +x /usr/bin/m-vless
+wget -q -O /usr/bin/m-trojan "${repo}menu/m-trojan.sh" && chmod +x /usr/bin/m-trojan
+wget -q -O /usr/bin/m-system "${repo}menu/m-system.sh" && chmod +x /usr/bin/m-system
+wget -q -O /usr/bin/m-sshovpn "${repo}menu/m-sshovpn.sh" && chmod +x /usr/bin/m-sshovpn
+wget -q -O /usr/bin/running "${repo}menu/running.sh" && chmod +x /usr/bin/running
+wget -q -O /usr/bin/m-backup "${repo}menu/m-backup.sh" && chmod +x /usr/bin/m-backup
+wget -q -O /usr/bin/speedtest "${repo}speedtest_cli.py" && chmod +x /usr/bin/speedtest
+wget -q -O /usr/bin/bckpbot "${repo}menu/bckpbot.sh" && chmod +x /usr/bin/bckpbot
+wget -q -O /usr/bin/tendang "${repo}menu/tendang.sh" && chmod +x /usr/bin/tendang
+wget -q -O /usr/bin/bottelegram "${repo}menu/bottelegram.sh" && chmod +x /usr/bin/bottelegram
+wget -q -O /usr/bin/xraylimit "${repo}menu/xraylimit.sh" && chmod +x /usr/bin/xraylimit
+wget -q -O /usr/bin/trialvmess "${repo}menu/trialvmess.sh" && chmod +x /usr/bin/trialvmess
+wget -q -O /usr/bin/trialvless "${repo}menu/trialtrojan.sh" && chmod +x /usr/bin/trialtrojan
+wget -q -O /usr/bin/trialtrojan "${repo}menu/trialvless.sh" && chmod +x /usr/bin/trialvless
+wget -q -O /usr/bin/trialssh "${repo}menu/trialssh.sh" && chmod +x /usr/bin/trialssh
+wget -q -O /usr/bin/autocpu "${repo}install/autocpu.sh" && chmod +x /usr/bin/autocpu
+wget -q -O /usr/bin/bantwidth "${repo}install/bantwidth" && chmod +x /usr/bin/bantwidth
 chmod +x menu
 chmod +x m-vmess
 chmod +x m-vless
 chmod +x m-trojan
 chmod +x m-system
 chmod +x m-sshovpn
-chmod +x m-ssws
 chmod +x running
-chmod +x m-update
 chmod +x m-backup
 chmod +x m-theme
 chmod +x m-ip
 chmod +x m-bot
-chmod +x update
 chmod +x bckpbot
 chmod +x tendang
 chmod +x bottelegram
 chmod +x backup
 chmod +x restore
 chmod +x cleaner
-chmod +x m-allxray
 chmod +x xraylimit
 chmod +x xp
 chmod +x trialvmess
@@ -180,6 +173,8 @@ chmod +x trialtrojan
 chmod +x trialssh
 chmod +x autocpu
 chmod +x bantwidth
+cd
+rm -rf *
 clear
 
 }

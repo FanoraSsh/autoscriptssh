@@ -389,7 +389,6 @@ TEXT2="
 <b>   PEMBELIAN VMESS SUCCES </b>
 <code>◇━━━━━━━━━━━━━━━━━━━◇</code>
 <b>DOMAIN  :</b> <code>${domain} </code>
-<b>CITY    :</b> <code>$CITY </code>
 <b>DATE    :</b> <code>${TIME2} WIB </code>
 <b>DETAIL  :</b> <code>Trx VMESS </code>
 <b>USER    :</b> <code>${user2}xxx </code>
@@ -456,7 +455,7 @@ read -p "Expired (Minutes): " timer
 done
 user=Trial-`</dev/urandom tr -dc X-Z0-9 | head -c4`
 iplim=1
-Quota=10
+Quota=5
 uuid=$(cat /proc/sys/kernel/random/uuid)
 masaaktif=0
 if [ ! -e /etc/vmess ]; then

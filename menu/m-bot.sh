@@ -15,8 +15,8 @@ checking_sc() {
         echo -e "            ${RED}PERMISSION DENIED !${NC}"
         echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
         echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
-        echo -e "             \033[0;33mContact Your Admin :https://wa.me/6287835373265${NC}"
-        echo -e "     \033[0;36mTelegram${NC}:  https://t.me/FanoraVpnTunnel"
+        echo -e "             \033[0;33mContact Your Admin ${NC}"
+        echo -e "     \033[0;36mTelegram${NC}:  https://t.me/Fanorassh"
         echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
         exit
     fi
@@ -36,13 +36,13 @@ apt install python3-pip
 sudo apt-get install -y p7zip-full
 cd /usr/bin
 clear
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/bot/bot.zip
+wget https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/bot/bot.zip
 unzip bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
 rm -rf bot.zip
 clear
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/bot/kyt.zip
+wget https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/bot/kyt.zip
 unzip kyt.zip
 pip3 install -r kyt/requirements.txt
 clear
@@ -129,13 +129,13 @@ systemctl enable kyt &> /dev/null
 systemctl start kyt &> /dev/null
 systemctl restart kyt &> /dev/null
 
-wget -q -O /usr/bin/addtrgo "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/trgo/addtrgo.sh" && chmod +x /usr/bin/addtrgo
+wget -q -O /usr/bin/addtrgo "https://raw.githubusercontent.com/Tomketstore/tunnelling/main/trgo/addtrgo.sh" && chmod +x /usr/bin/addtrgo
 
-wget -q -O /usr/bin/deltrgo "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/trgo/deltrgo.sh" && chmod +x /usr/bin/deltrgo
+wget -q -O /usr/bin/deltrgo "https://raw.githubusercontent.com/Tomketstore/tunnelling/main/trgo/deltrgo.sh" && chmod +x /usr/bin/deltrgo
 
-wget -q -O /usr/bin/cektrgo "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/trgo/cektrgo.sh" && chmod +x /usr/bin/cektrgo
+wget -q -O /usr/bin/cektrgo "https://raw.githubusercontent.com/Tomketstore/tunnelling/main/trgo/cektrgo.sh" && chmod +x /usr/bin/cektrgo
 
-wget -q -O /usr/bin/renewtrgo "https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/trgo/renewtrgo.sh" && chmod +x /usr/bin/renewtrgo
+wget -q -O /usr/bin/renewtrgo "https://raw.githubusercontent.com/Tomketstore/tunnelling/main/trgo/renewtrgo.sh" && chmod +x /usr/bin/renewtrgo
 
 echo "Done"
 echo " Installations complete, type /menu on your bot"
@@ -223,13 +223,13 @@ rm -rf /usr/bin/kyt.zip
 rm -rf /usr/bin/kyt
 sleep 2
 cd /usr/bin
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/bot/bot.zip
+wget https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/bot/bot.zip
 unzip bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
 rm -rf bot.zip
 clear
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/bot/kyt.zip
+wget https://raw.githubusercontent.com/FanoraSsh/autoscriptssh/main/bot/kyt.zip
 unzip kyt.zip
 cd kyt
 pip3 install -r kyt/requirements.txt

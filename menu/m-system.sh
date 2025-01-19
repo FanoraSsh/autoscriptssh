@@ -28,21 +28,6 @@ exit
 fi
 }
 checking_sc
-function ins-helium(){
-clear
-if [[ -e /usr/bin/helium ]]; then
-helium
-else
-echo -ne
-if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
-echo -e " OS UBUNTU GA BISA INSTALL MENU INI"
-read -n 1 -s -r -p "  Press any key to Back"
-menu
-else
-wget -q -O /usr/bin/helium "https://cdn.discordapp.com/attachments/1043809011474112566/1054014513428566016/helium.sh" && chmod +x /usr/bin/helium && helium
-fi
-fi
-}
 function add-host(){
 fun_bar() {
 CMD[0]="$1"
@@ -68,35 +53,7 @@ tput dl1
 echo -ne "  \033[0;33mUpdate Domain... \033[1;37m- \033[0;33m["
 done
 echo -e "\033[0;33m]\033[1;37m -\033[1;32m Succes !\033[1;37m"
-tput cnorm
-}
-sldns() {
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/slowdns/installsl.sh && chmod +x installsl.sh && ./installsl.sh
-}
-res1() {
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/slowdns/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
-clear
-}
-res2() {
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/slowdns/rmbl1.sh && chmod +x rmbl1.sh && ./rmbl1.sh
-clear
-}
-res3() {
-wget https://raw.githubusercontent.com/FanoraSsh/Autoscript/main/slowdns/rmbl2.sh && chmod +x rmbl2.sh && ./rmbl2.sh
-clear
-}
-clear
-echo -e "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│ ${WH}Please select a your Choice to Set Domain              ${NC}"
-echo -e "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo -e "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│  [ 1 ]  ${WH}Domain kamu Sendri    ${NC}"
-echo -e "$COLOR1│  [ 2 ]  ${WH}Domain Yang Punya Script     ${NC}"
-echo -e "$COLOR1╰══════════════════════════════════════════╯${NC}"
-until [[ $dns =~ ^[0-9]+$ ]]; do
-read -p "   Please select numbers 1-2 or Any Button(Random) : " dns
-done
-if [[ $dns == "1" ]]; then
+tput cnormc
 clear
 echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
 echo -e  "$COLOR1│             ${WH}TERIMA KASIH                 $COLOR1│${NC}"
@@ -109,190 +66,16 @@ read -rp "Masukan domain kamu Disini : " -e dnss
 done
 echo ""
 echo "$dnss" > /etc/xray/domain
-echo "$dnss" > /etc/v2ray/domain
-echo "IP=$dnss" > /var/lib/ipvps.conf
+echo "$dnss" > /etc/root/domain
+echo "IP=$dnss" > /var/lib/kyt/ipvps.conf
 read -n 1 -s -r -p "  Press any key to Back Menu"
 certv2ray
 clear
-elif [[ $dns == "2" ]]; then
-clear
-echo -e "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│ \033[1;37mPlease select a your Choice to Set Domain$COLOR1│${NC}"
-echo -e "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo -e "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│  [ 1 ]  \033[1;37mDomain xxx.tepllovpn.eu.org       ${NC}"
-echo -e "$COLOR1╰══════════════════════════════════════════╯${NC}"
-until [[ $domain2 =~ ^[1-2]+$ ]]; do
-read -p "   Please select numbers : " domain2
-done
-if [[ $domain2 == "1" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│  \033[1;37mContoh subdomain xxx.pirang.cloud       $COLOR1│${NC}"
-echo -e  "$COLOR1│    \033[1;37mxxx jadi subdomain kamu               $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dn1 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn1
-done
-echo "$dn1" > /etc/xray/domain
-echo "$dn1" > /root/subdomainx
-cd
-sleep 1
-fun_bar 'res1'
-clear
-rm -rf /root/subdomainx
-certv2ray
-clear
-fi
-if [[ $domain2 == "2" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│  \033[1;37mContoh subdomain xxx.berurat.cloud      $COLOR1│${NC}"
-echo -e  "$COLOR1│    \033[1;37mxxx jadi subdomain kamu               $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dn2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn2
-done
-echo "$dn2" > /etc/xray/domain
-echo "$dn2" > /root/subdomainx
-cd
-sleep 1
-fun_bar 'res2'
-clear
-rm -rf /root/subdomainx
-fi
-if [[ $domain2 == "3" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│  \033[1;37mContoh subdomain xxx.xnxxms.cloud       $COLOR1│${NC}"
-echo -e  "$COLOR1│    \033[1;37mxxx jadi subdomain kamu               $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dn3 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn3
-done
-echo "$dn3" > /etc/xray/domain
-echo "$dn3" > /root/subdomainx
-cd
-sleep 1
-fun_bar 'res5'
-clear
-rm -rf /root/subdomainx
-fi
-if [[ $domain2 == "4" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│  \033[1;37mContoh subdomain xxx.slowapp.dev        $COLOR1│${NC}"
-echo -e  "$COLOR1│    \033[1;37mxxx jadi subdomain kamu               $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dn4 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn4
-done
-echo "$dn4" > /etc/xray/domain
-echo "$dn4" > /root/subdomainx
-cd
-sleep 1
-fun_bar 'res4'
-clear
-rm -rf /root/subdomainx
-fi
-if [[ $domain2 == "5" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│  \033[1;37mContoh subdomain xxx.vpnvip.tech        $COLOR1│${NC}"
-echo -e  "$COLOR1│    \033[1;37mxxx jadi subdomain kamu               $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dn5 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn5
-done
-echo "$dn5" > /etc/xray/domain
-echo "$dn5" > /root/subdomainx
-cd
-sleep 1
-fun_bar 'res3'
-clear
-rm -rf /root/subdomainx
-fi
-if [[ $domain2 == "6" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│  \033[1;37mContoh subdomain xxx.slowvip.tech        $COLOR1│${NC}"
-echo -e  "$COLOR1│    \033[1;37mxxx jadi subdomain kamu               $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dn6 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn6
-done
-echo "$dn6" > /etc/xray/domain
-echo "$dn6" > /root/subdomainx
-cd
-sleep 1
-fun_bar 'res6'
-clear
-rm -rf /root/subdomainx
-fi
-read -n 1 -s -r -p "  Press any key to Renew Cert or Ctrl + C to Exit"
-certv2ray
-clear
-elif [[ $dns == "3" ]]; then
-clear
-cd
-sleep 1
-fun_bar 'sldns'
-read -n 1 -s -r -p "  Press any key to Back Menu"
-menu
-clear
-elif [[ $dns == "4" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│             ${WH}TERIMA KASIH                 $COLOR1│${NC}"
-echo -e  "$COLOR1│        ${WH}SUDAH MENGGUNAKAN SCRIPT          $COLOR1│${NC}"
-echo -e  "$COLOR1│               ${WH}SFVT VPN                   $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dns1 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan domain kamu Disini : " -e dns1
-done
-echo ""
-echo "$dns1" > /etc/xray/domain
-echo "$dns1" > /etc/v2ray/domain
-echo "IP=$dns1" > /var/lib/ipvps.conf
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│             ${WH}TERIMA KASIH                 $COLOR1│${NC}"
-echo -e  "$COLOR1│        ${WH}SUDAH MENGGUNAKAN SCRIPT          $COLOR1│${NC}"
-echo -e  "$COLOR1│               ${WH}SFVT VPN                   $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dns2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan Domain SlowDNS kamu Disini : " -e dns2
-done
-echo $dns2 >/etc/xray/dns
-read -n 1 -s -r -p "  Press any key to Back Menu"
-menu
-clear
-elif [[ $dns == "5" ]]; then
-clear
-echo -e  "$COLOR1╭══════════════════════════════════════════╮${NC}"
-echo -e  "$COLOR1│             ${WH}TERIMA KASIH                 $COLOR1│${NC}"
-echo -e  "$COLOR1│        ${WH}SUDAH MENGGUNAKAN SCRIPT          $COLOR1│${NC}"
-echo -e  "$COLOR1│               ${WH}SFVT VPN                   $COLOR1│${NC}"
-echo -e  "$COLOR1╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dnscl =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan domain kamu Disini : " -e dnscl
-done
-echo ""
-echo "$dnscl" > /etc/cloudfront
-fi
 echo -e " Back To Menu"
 sleep 1
 menu
 }
+
 function auto-reboot(){
 clear
 if [ ! -e /etc/cron.d/re_otm ]; then
@@ -958,7 +741,7 @@ read -p "   Please select numbers 1-3 or Any Button(BACK) : " dobot
 done
 if [[ $dobot == "1" ]]; then
 clear
-wget https://raw.githubusercontent.com/FanoraSSH/Autoscript/main/dobot/install.sh &> /dev/null
+wget https://raw.githubusercontent.com/Freetunnel/hpp/main/dobot/install.sh &> /dev/null
 chmod +x install.sh
 bash install.sh
 rm -rf install.sh
@@ -1032,12 +815,6 @@ fi
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
-function speed2(){
-apt install -y neofecth >/dev/null
-clear
-neofetch
-speedtest
-}
 function nameauthor(){
 read -rp "Input Your New Name : " -e name
 echo "$name" > /etc/profil
@@ -1063,7 +840,7 @@ echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
 case $opt in
 01 |1) clear ; add-host ; exit ;;
-02 |2) clear ; speed2 ; exit ;;
+02 |2) clear ; speed ; exit ;;
 03 |3) clear ; auto-reboot ; exit ;;
 04 |4) clear ; bw ; exit ;;
 05 |5) clear ; m-webmin ; exit ;;
