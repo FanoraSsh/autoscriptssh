@@ -1,7 +1,7 @@
 #!/bin/bash
 # SETUP UNTUK IZIN IP SERVERNYA 
 # ### IPVPS
-repo="https://raw.githubusercontent.com/FanoraTunnel/fanoratunel/main/"
+repo="https://raw.githubusercontent.com/Fanorassh/autoscriptssh/main/"
 function CEKIP () {
 ipsaya=$(wget -qO- ifconfig.me)
 MYIP=$(curl -sS ipv4.icanhazip.com)
